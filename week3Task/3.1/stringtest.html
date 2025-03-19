@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="framework/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="" id="app">
+      <h1 class="bg-danger">String test</h1>
+      <p>Please enter your name <input type="text" v-model="myName" /></p>
+      <p v-if="myName.toLowerCase() == 'ryan'">Awesome Name!</p>
+      <p v-else-if="myName.toLowerCase() != 'ryan'">
+        {{ myName }} is not my name
+      </p>
+    </div>
+
+    <script src="framework/js/vue.global.js"></script>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            myName: "",
+          };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
