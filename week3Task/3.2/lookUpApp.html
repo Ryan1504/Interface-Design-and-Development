@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lookUpApp</title>
+    <link rel="stylesheet" href="framework/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <div class="row">
+        <h2>Lookup App: Unit Search Filter</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <p>
+            <label for="code">Code: </label>
+            <input type="text" name="code" id="code" v-model="unitObj.code" />
+          </p>
+        </div>
+
+        <div class="col-sm-3">
+          <p>
+            <label for="desc">Description: </label>
+            <input type="text" name="desc" id="desc" v-model="unitObj.desc" />
+          </p>
+        </div>
+
+        <div class="col-sm-6">
+          <p>
+            <label>Unit Type: </label> <br />
+            <input type="radio" id="core" v-model="unitObj.type" value="core" />
+            <label for="core">Core</label> <br />
+            <input
+              type="radio"
+              id="sDev"
+              v-model="unitObj.type"
+              value="Software Development"
+            />
+            <label for="sDev">Software Development</label> <br />
+            <input
+              type="radio"
+              id="sAnalysis"
+              v-model="unitObj.type"
+              value="Systems Analysis"
+            />
+            <label for="sAnalysis">Systems Analysis</label> <br />
+            <input type="radio" id="all" v-model="unitObj.type" value="All" />
+            <label for="all">All</label>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Code</th>
+              <th>Description</th>
+              <th>Credit Points</th>
+              <th>Type</th>
+            </tr>
+            <!-- Using v-for to loop and list them -->
+            <tr v-for=" i in filteredUnits">
+              <td>{{ i.code }}</td>
+              <td>{{ i.desc}}</td>
+              <td>{{ i.cp }}</td>
+              <td>{{ i.type }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="framework/js/vue.global.js"></script>
+    <script src="framework/js/script.js"></script>
+  </body>
+</html>
