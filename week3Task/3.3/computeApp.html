@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="framework/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h2>Compute App</h2>
+      <br />
+      <form action="">
+        <label for="weight">
+          Enter weight in kilograms:
+          <input type="number" name="weight" id="weight" v-model="weight"
+        /></label>
+        <br />
+        <br />
+        <label for="height">
+          Enter height in centimeters:
+          <input
+            type="number"
+            name="height"
+            id=" height"
+            placeholder="cm"
+            v-model="height"
+        /></label>
+      </form>
+
+      <p v-if="bmi">Your BMI is: {{ bmi.toFixed(2) }}</p>
+      <p v-if="msg === 'underweight'">You are underweight</p>
+      <p v-if="msg === 'normalWeight'">You are normal weight</p>
+      <p v-if="msg === 'overweight'">You are overweight</p>
+      <p v-if="msg === 'obese'">You are obese</p>
+      <!-- Use if to display both BMI and the Msg -->
+    </div>
+    <script src="framework/js/vue.global.js"></script>
+    <script src="framework/js/script.js"></script>
+  </body>
+</html>
