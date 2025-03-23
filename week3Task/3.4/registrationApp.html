@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration App</title>
+    <link rel="stylesheet" href="framework/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+        <h2>Registration App: Cloud Service</h2>
+      </div>
+
+      <div class="row col-12">
+        <form action="">
+          <h3>Login Information</h3>
+          <div>
+            <label for="name">
+              Enter user name:
+              <input type="text" v-model="name" placeholder="name"
+            /></label>
+          </div>
+          <br />
+          <br />
+          <div>
+            <label for="password">
+              Enter password:
+              <input type="password" v-model="password" placeholder="password"
+            /></label>
+          </div>
+          <br />
+          <br />
+          <div>
+            <label for="repassword">
+              Re-enter password:
+              <input
+                type="password"
+                v-model="repassword"
+                placeholder="re-password"
+            /></label>
+
+            <div v-if="passwordChecker">{{ passwordChecker }}</div>
+          </div>
+        </form>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-6">
+          <label>Operating System:</label>
+          <div>
+            <div v-for="os in osOptions">
+              <input type="radio" :value="os" v-model="selectedOS" :name="os" />
+              <label for="os">{{ os }}</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h3>Model</h3>
+
+          <select class="form-select" v-model="selectedModel" name="phoneModel">
+            <option disabled value="">Select a model</option>
+            <option v-for="model in phoneModels[selectedOS]" :key="model">
+              {{ model }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <br />
+      <div class="row col-12" v-if="name && selectedModel && !passwordChecker">
+        <h3>Summary</h3>
+        <ul>
+          <li><strong>Username:</strong> {{ name }}</li>
+          <li><strong>Operating System:</strong> {{ selectedOS }}</li>
+          <li><strong>Phone Model:</strong> {{ selectedModel }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="framework/js/vue.global.js"></script>
+    <script src="framework/js/script.js"></script>
+  </body>
+</html>
